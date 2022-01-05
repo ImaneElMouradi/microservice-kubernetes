@@ -34,14 +34,14 @@ default() {
     kubectl apply -f invoice-${suffix}/
     kubectl apply -f notification-${suffix}/
     kubectl apply -f productorder-${suffix}/
-    kubectl apply -f monitoring-${suffix}/jhipster-prometheus-crd.yml
-    until [ $(kubectl get crd prometheuses.monitoring.coreos.com 2>>/dev/null | wc -l) -ge 2 ]; do
-        echo "Waiting for the custom resource prometheus operator to get initialised";
-        sleep 5;
-    done
-    kubectl apply -f monitoring-${suffix}/jhipster-prometheus-cr.yml
-    kubectl apply -f monitoring-${suffix}/jhipster-grafana.yml
-    kubectl apply -f monitoring-${suffix}/jhipster-grafana-dashboard.yml
+    #kubectl apply -f monitoring-${suffix}/jhipster-prometheus-crd.yml
+    # until [ $(kubectl get crd prometheuses.monitoring.coreos.com 2>>/dev/null | wc -l) -ge 2 ]; do
+    #     echo "Waiting for the custom resource prometheus operator to get initialised";
+    #     sleep 5;
+    # done
+    # kubectl apply -f monitoring-${suffix}/jhipster-prometheus-cr.yml
+    # kubectl apply -f monitoring-${suffix}/jhipster-grafana.yml
+    # kubectl apply -f monitoring-${suffix}/jhipster-grafana-dashboard.yml
 
 }
 

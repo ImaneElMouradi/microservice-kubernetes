@@ -8,12 +8,12 @@ spec:
   selector:
     matchLabels:
       app: productorder
-      version: "v1"
+      version: 'v1'
   template:
     metadata:
       labels:
         app: productorder
-        version: "v1"
+        version: 'v1'
     spec:
       affinity:
         podAntiAffinity:
@@ -31,8 +31,8 @@ spec:
         - name: init-ds
           image: busybox:latest
           command:
-            - "/bin/sh"
-            - "-c"
+            - '/bin/sh'
+            - '-c'
             - |
               while true
               do
@@ -64,20 +64,20 @@ spec:
             - name: SPRING_LIQUIBASE_URL
               value: jdbc:mysql://productorder-mysql.store.svc.cluster.local:3306/productorder?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC&createDatabaseIfNotExist=true
             - name: MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED
-              value: "true"
+              value: 'false'
             - name: SPRING_SLEUTH_PROPAGATION_KEYS
-              value: "x-request-id,x-ot-span-context"
+              value: 'x-request-id,x-ot-span-context'
             - name: JAVA_OPTS
-              value: " -Xmx256m -Xms256m"
+              value: ' -Xmx256m -Xms256m'
             - name: SERVER_SHUTDOWN
               value: graceful
           resources:
             requests:
-              memory: "512Mi"
-              cpu: "500m"
+              memory: '512Mi'
+              cpu: '500m'
             limits:
-              memory: "1Gi"
-              cpu: "1"
+              memory: '1Gi'
+              cpu: '1'
           ports:
             - name: http
               containerPort: 8081

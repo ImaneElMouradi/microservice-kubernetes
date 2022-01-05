@@ -8,12 +8,12 @@ spec:
   selector:
     matchLabels:
       app: notification
-      version: "v1"
+      version: 'v1'
   template:
     metadata:
       labels:
         app: notification
-        version: "v1"
+        version: 'v1'
     spec:
       affinity:
         podAntiAffinity:
@@ -31,8 +31,8 @@ spec:
         - name: init-ds
           image: busybox:latest
           command:
-            - "/bin/sh"
-            - "-c"
+            - '/bin/sh'
+            - '-c'
             - |
               while true
               do
@@ -62,22 +62,22 @@ spec:
             - name: SPRING_DATA_MONGODB_DATABASE
               value: notification
             - name: SPRING_DATA_MONGODB_URI
-              value: "mongodb://notification-mongodb-0.notification-mongodb.store:27017,notification-mongodb-1.notification-mongodb.store:27017,notification-mongodb-2.notification-mongodb.store:27017"
+              value: 'mongodb://notification-mongodb-0.notification-mongodb.store:27017,notification-mongodb-1.notification-mongodb.store:27017,notification-mongodb-2.notification-mongodb.store:27017'
             - name: MANAGEMENT_METRICS_EXPORT_PROMETHEUS_ENABLED
-              value: "true"
+              value: 'false'
             - name: SPRING_SLEUTH_PROPAGATION_KEYS
-              value: "x-request-id,x-ot-span-context"
+              value: 'x-request-id,x-ot-span-context'
             - name: JAVA_OPTS
-              value: " -Xmx256m -Xms256m"
+              value: ' -Xmx256m -Xms256m'
             - name: SERVER_SHUTDOWN
               value: graceful
           resources:
             requests:
-              memory: "512Mi"
-              cpu: "500m"
+              memory: '512Mi'
+              cpu: '500m'
             limits:
-              memory: "1Gi"
-              cpu: "1"
+              memory: '1Gi'
+              cpu: '1'
           ports:
             - name: http
               containerPort: 8083
